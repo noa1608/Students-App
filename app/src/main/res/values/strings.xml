@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task 2</string>
+    <string name="add_student">Add Student</string>
+    <string name="save">Save</string>
+    <string name="edit_student">Edit Student</string>
+    <string name="name">Name</string>
+    <string name="id">ID</string>
+</resources>
