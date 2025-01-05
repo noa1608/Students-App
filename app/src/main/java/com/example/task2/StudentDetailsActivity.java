@@ -2,6 +2,7 @@ package com.example.task2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +13,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
 
     private TextView studentName, studentId, studentPhone, studentAddress;
     private ImageView studentImage; // Add this if you're showing an image as well.
+    private Button editStudentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         studentPhone = findViewById(R.id.studentPhone);
         studentAddress = findViewById(R.id.studentAddress);
         studentImage = findViewById(R.id.studentImage); // This is for displaying the static image
+        editStudentButton = findViewById(R.id.editStudentButton);
 
         // Retrieve student ID from Intent
         String studentIdValue = getIntent().getStringExtra("studentId");
@@ -45,6 +48,12 @@ public class StudentDetailsActivity extends AppCompatActivity {
             studentAddress.setText(student.getAddress());
             studentImage.setImageResource(student.getPictureResId()); // Set the student's image
         }
+        editStudentButton.setOnClickListener(v -> {
+            // Pass the student details to the EditStudentActivity
+            Intent intent = new Intent(StudentDetailsActivity.this, EditStudentActivity.class);
+            intent.putExtra("studentId", studentIdValue); // Pass the student ID to the Edit Activity
+            startActivity(intent);
+        });
     }
     @Override
     public boolean onSupportNavigateUp() {

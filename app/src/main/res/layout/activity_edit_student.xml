@@ -4,33 +4,53 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Toolbar with Back Button -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Edit Student"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp" />
+
+    <!-- EditText for Name -->
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:hint="Enter Name" />
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"/>
 
+    <!-- EditText for ID -->
     <EditText
         android:id="@+id/idInput"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Enter ID" />
+        android:layout_height="wrap_content"
+        android:hint="ID"
+        android:inputType="text"/>
 
+    <!-- EditText for Phone -->
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:hint="Enter Phone" />
+        android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:inputType="phone"/>
 
+    <!-- EditText for Address -->
     <EditText
         android:id="@+id/addressInput"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:hint="Enter Address" />
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:inputType="text"/>
 
+    <!-- Save Button -->
     <Button
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:text="Save" />
+        android:layout_height="wrap_content"
+        android:text="Save Changes" />
+
 </LinearLayout>
