@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
       holder.name.setText(student.getName());
       holder.id.setText(student.getId());
       holder.checkBox.setChecked(student.isChecked());
+      holder.picture.setImageResource(student.getPictureResId());  // Set student picture
 
       holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> student.setChecked(isChecked));
 
@@ -54,12 +56,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
    public static class ViewHolder extends RecyclerView.ViewHolder {
       TextView name, id;
       CheckBox checkBox;
+      ImageView picture; // Added ImageView for picture
 
       public ViewHolder(@NonNull View itemView) {
          super(itemView);
          name = itemView.findViewById(R.id.studentName);
          id = itemView.findViewById(R.id.studentId);
          checkBox = itemView.findViewById(R.id.checkBox);
+         picture = itemView.findViewById(R.id.studentPicture); // Initialize picture ImageView
       }
    }
 }

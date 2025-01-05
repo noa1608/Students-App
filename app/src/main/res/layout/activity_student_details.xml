@@ -4,20 +4,52 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Student Name -->
+    <!-- Student Picture -->
+    <ImageView
+        android:id="@+id/studentImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/student_pic"
+        android:contentDescription="Student Image" />
+
+    <!-- Student Info -->
     <TextView
         android:id="@+id/studentName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Student Name"
         android:textSize="20sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="16dp"/>
 
-    <!-- Student ID -->
     <TextView
         android:id="@+id/studentId"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Student ID"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/studentPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/studentAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Student Checkbox Status -->
+    <CheckBox
+        android:id="@+id/studentCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checked"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

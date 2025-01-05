@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    private EditText nameInput, idInput;
+    private EditText nameInput, idInput, phoneInput, addressInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,8 @@ public class AddStudentActivity extends AppCompatActivity {
 
         nameInput = findViewById(R.id.nameInput);
         idInput = findViewById(R.id.idInput);
+        phoneInput = findViewById(R.id.phoneInput);
+        addressInput = findViewById(R.id.addressInput);
         Button saveButton = findViewById(R.id.saveButton);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -25,10 +27,15 @@ public class AddStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = nameInput.getText().toString();
                 String id = idInput.getText().toString();
+                String phone = phoneInput.getText().toString();
+                String address = addressInput.getText().toString();
 
-                if (!name.isEmpty() && !id.isEmpty()) {
-                    Database.getInstance().addStudent(new Student(name, id, false));
-                    finish();
+                // Check if the fields are not empty
+                if (!name.isEmpty() && !id.isEmpty() && !phone.isEmpty() && !address.isEmpty()) {
+                    // Create a new Student object and add it to the temporary database
+                    Student student = new Student(name, id, phone, address, false, R.drawable.student_pic);
+                    Database.getInstance().addStudent(student);
+                    finish();  // Close the activity and return to the main screen
                 }
             }
         });
