@@ -1,6 +1,8 @@
 package com.example.task2;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
    private String name;
    private String id;
    private boolean isChecked;

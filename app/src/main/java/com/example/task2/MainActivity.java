@@ -21,10 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Set up the toolbar as the action bar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         Button addStudentButton = findViewById(R.id.addStudentButton);
@@ -36,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        getSupportActionBar().setTitle("Students App");
         // Button to navigate to AddStudentActivity
         addStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override

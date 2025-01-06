@@ -4,6 +4,13 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/studentImage"
+        android:layout_width="match_parent"
+        android:layout_height="171dp"
+        android:contentDescription="Student Image"
+        android:src="@drawable/student_pic" />
+
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
