@@ -10,7 +10,6 @@ import android.view.MenuItem;
 public class EditStudentActivity extends AppCompatActivity {
 
     private EditText nameInput, idInput, phoneInput, addressInput;
-  //  private String studentId;
     private Student student;
     private Button saveButton;
 
@@ -57,7 +56,7 @@ public class EditStudentActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Navigate back to the previous screen
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

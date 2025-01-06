@@ -37,9 +37,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
       holder.name.setText(student.getName());
       holder.id.setText(student.getId());
       holder.checkBox.setChecked(student.isChecked());
-      holder.picture.setImageResource(student.getPictureResId());  // Set student picture
+      holder.picture.setImageResource(student.getPictureResId());
 
-      holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> student.setChecked(isChecked));
+      holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+         student.setChecked(isChecked);
+         Database.getInstance().updateStudent(student);
+      });
 
       holder.itemView.setOnClickListener(v -> {
          Intent intent = new Intent(context, StudentDetailsActivity.class);
@@ -56,14 +59,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
    public static class ViewHolder extends RecyclerView.ViewHolder {
       TextView name, id;
       CheckBox checkBox;
-      ImageView picture; // Added ImageView for picture
+      ImageView picture;
 
       public ViewHolder(@NonNull View itemView) {
          super(itemView);
          name = itemView.findViewById(R.id.studentName);
          id = itemView.findViewById(R.id.studentId);
          checkBox = itemView.findViewById(R.id.checkBox);
-         picture = itemView.findViewById(R.id.studentPicture); // Initialize picture ImageView
+         picture = itemView.findViewById(R.id.studentPicture);
       }
    }
 }

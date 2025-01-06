@@ -33,9 +33,9 @@ public class AddStudentActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
 
         Glide.with(this)
-                .load(R.drawable.student_pic) // The image resource
-                .apply(new RequestOptions().override(500, 600)) // Resize the image to fit a maximum of 1000x1000 pixels
-                .centerCrop() // Crop the image to fit within the ImageView
+                .load(R.drawable.student_pic)
+                .apply(new RequestOptions().override(500, 600))
+                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(studentImage);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -46,21 +46,18 @@ public class AddStudentActivity extends AppCompatActivity {
                 String phone = phoneInput.getText().toString();
                 String address = addressInput.getText().toString();
 
-                // Check if the fields are not empty
                 if (!name.isEmpty() && !id.isEmpty() && !phone.isEmpty() && !address.isEmpty()) {
-                    // Create a new Student object and add it to the temporary database
                     Student student = new Student(name, id, phone, address, false, R.drawable.student_pic);
                     Database.getInstance().addStudent(student);
-                    finish();  // Close the activity and return to the main screen
+                    finish();
                 }
             }
         });
     }
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        // Handle the back button click
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();  // This will take you back to the previous activity
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

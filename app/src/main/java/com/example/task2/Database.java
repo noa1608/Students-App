@@ -33,4 +33,12 @@ public class Database {
         }
         return null;
     }
+    public void updateStudent(Student updatedStudent) {
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId().equals(updatedStudent.getId())) {
+                students.set(i, updatedStudent);
+                break;
+            }
+        }
+    }
 }
