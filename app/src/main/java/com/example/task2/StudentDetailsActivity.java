@@ -25,7 +25,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Students App");
+        getSupportActionBar().setTitle("Students Details");
 
         studentName = findViewById(R.id.studentName);
         studentId = findViewById(R.id.studentId);

@@ -23,7 +23,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Students App");
+        getSupportActionBar().setTitle("New Students");
 
         nameInput = findViewById(R.id.nameInput);
         idInput = findViewById(R.id.idInput);

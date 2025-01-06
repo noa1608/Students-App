@@ -20,7 +20,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Students App");
+        getSupportActionBar().setTitle("Edit Students");
 
         nameInput = findViewById(R.id.nameInput);
         idInput = findViewById(R.id.idInput);
