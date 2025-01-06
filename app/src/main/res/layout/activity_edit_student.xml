@@ -18,33 +18,33 @@
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:hint="Name"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <!-- EditText for ID -->
     <EditText
         android:id="@+id/idInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:hint="ID"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <!-- EditText for Phone -->
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="69dp"
         android:hint="Phone"
-        android:inputType="phone"/>
+        android:inputType="phone" />
 
     <!-- EditText for Address -->
     <EditText
         android:id="@+id/addressInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="69dp"
         android:hint="Address"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <!-- Save Button -->
     <Button
