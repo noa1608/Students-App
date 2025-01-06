@@ -11,7 +11,8 @@ public class EditStudentActivity extends AppCompatActivity {
 
     private EditText nameInput, idInput, phoneInput, addressInput;
     private Student student;
-    private Button saveButton;
+    private Button saveButton, deleteButton, cancelButton;
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class EditStudentActivity extends AppCompatActivity {
         phoneInput = findViewById(R.id.phoneInput);
         addressInput = findViewById(R.id.addressInput);
         saveButton = findViewById(R.id.saveButton);
+        deleteButton = findViewById(R.id.deleteStudentButton);
+        cancelButton = findViewById(R.id.cancelEditButton);
 
         String studentId = getIntent().getStringExtra("studentId");
 
@@ -51,6 +54,19 @@ public class EditStudentActivity extends AppCompatActivity {
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }
+        });
+        deleteButton.setOnClickListener(v -> {
+            String studentIdValue = getIntent().getStringExtra("studentId");
+            Database.getInstance().deleteStudent(studentIdValue);
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("studentId", studentIdValue);
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        });
+        cancelButton.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
+            finish();
         });
     }
     @Override

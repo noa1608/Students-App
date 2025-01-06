@@ -64,6 +64,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
             startActivityForResult(intent, EDIT_STUDENT_REQUEST_CODE);
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -72,19 +73,27 @@ public class StudentDetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == EDIT_STUDENT_REQUEST_CODE && resultCode == RESULT_OK) {
-            Student updatedStudent = (Student) data.getSerializableExtra("updatedStudent");
-
-            if (updatedStudent != null) {
+            String deletedStudentId = data.getStringExtra("studentId");
+            if (deletedStudentId != null) {
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra("updatedStudent", updatedStudent);
+                resultIntent.putExtra("studentId", deletedStudentId);
                 setResult(RESULT_OK, resultIntent);
                 finish();
+            } else {
+                Student updatedStudent = (Student) data.getSerializableExtra("updatedStudent");
+                if (updatedStudent != null) {
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("updatedStudent", updatedStudent);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
 
+                }
             }
         }
     }

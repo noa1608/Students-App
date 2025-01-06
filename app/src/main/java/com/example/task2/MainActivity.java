@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (updatedStudent != null) {
                 Database.getInstance().updateStudent(updatedStudent);
-
                 studentAdapter.notifyDataSetChanged();
             }
         }
