@@ -16,6 +16,8 @@ public class AddStudentActivity extends AppCompatActivity {
 
     private EditText nameInput, idInput, phoneInput, addressInput;
     private ImageView studentImage;
+    private Button saveButton, cancelButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,8 @@ public class AddStudentActivity extends AppCompatActivity {
         phoneInput = findViewById(R.id.phoneInput);
         addressInput = findViewById(R.id.addressInput);
         studentImage = findViewById(R.id.studentImage);
-        Button saveButton = findViewById(R.id.saveButton);
+        saveButton = findViewById(R.id.saveButton);
+        cancelButton = findViewById(R.id.cancelButton);
 
         Glide.with(this)
                 .load(R.drawable.student_pic)
@@ -52,6 +55,10 @@ public class AddStudentActivity extends AppCompatActivity {
                     finish();
                 }
             }
+        });
+        cancelButton.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
+            finish();
         });
     }
     @Override

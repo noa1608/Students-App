@@ -40,5 +40,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/button_color"
-        android:text="Save Student" />
+        android:layout_marginTop="13dp"
+        android:text="Create Student" />
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/button_color"
+        android:layout_marginTop="13dp"
+        android:text="Cancel" />
 </LinearLayout>
