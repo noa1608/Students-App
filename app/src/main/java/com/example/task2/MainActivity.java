@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import com.example.task2.StudentAdapter;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private StudentAdapter studentAdapter;
+    private static final int EDIT_STUDENT_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        getSupportActionBar().setTitle("Students App");
+
         addStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,5 +45,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         studentAdapter.notifyDataSetChanged();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == EDIT_STUDENT_REQUEST_CODE && resultCode == RESULT_OK) {
+            Student updatedStudent = (Student) data.getSerializableExtra("updatedStudent");
+
+            if (updatedStudent != null) {
+                Database.getInstance().updateStudent(updatedStudent);
+                studentAdapter.notifyDataSetChanged();
+            }
+        }
     }
 }

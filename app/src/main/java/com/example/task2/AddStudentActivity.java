@@ -4,33 +4,69 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    private EditText nameInput, idInput;
+    private EditText nameInput, idInput, phoneInput, addressInput;
+    private ImageView studentImage;
+    private Button saveButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("New Students");
+
         nameInput = findViewById(R.id.nameInput);
         idInput = findViewById(R.id.idInput);
-        Button saveButton = findViewById(R.id.saveButton);
+        phoneInput = findViewById(R.id.phoneInput);
+        addressInput = findViewById(R.id.addressInput);
+        studentImage = findViewById(R.id.studentImage);
+        saveButton = findViewById(R.id.saveButton);
+        cancelButton = findViewById(R.id.cancelButton);
 
+        Glide.with(this)
+                .load(R.drawable.student_pic)
+                .apply(new RequestOptions().override(500, 600))
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(studentImage);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = nameInput.getText().toString();
                 String id = idInput.getText().toString();
+                String phone = phoneInput.getText().toString();
+                String address = addressInput.getText().toString();
 
-                if (!name.isEmpty() && !id.isEmpty()) {
-                    Database.getInstance().addStudent(new Student(name, id, false));
+                if (!name.isEmpty() && !id.isEmpty() && !phone.isEmpty() && !address.isEmpty()) {
+                    Student student = new Student(name, id, phone, address, false, R.drawable.student_pic);
+                    Database.getInstance().addStudent(student);
                     finish();
                 }
             }
         });
+        cancelButton.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
+            finish();
+        });
+    }
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
